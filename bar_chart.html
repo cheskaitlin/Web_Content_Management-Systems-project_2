@@ -41,7 +41,31 @@
 </nav>
 <div>
     <h1>Bar Chart - Top Albums Count by Genre</h1>
+    <div id="bar-chart-container"></div>
+    <table class="table mt-5">
+        <thead>
+        <tr>
+            <th>Genre</th>
+            <th>Albums</th>
+        </tr>
+        </thead>
+        <tbody id="table-data"></tbody>
+    </table>
+
 </div>
+<script src="components/Chart.js"></script>
+<script src="components/BarChart.js"></script>
+<script>
+    function createBarChart(albums) {
+        const chart = new BarChart(albums);
+        chart.createBarChart();
+        chart.createSummaryTable();
+    }
+
+    // Load data from the JSON file and call the createPieChart function
+    d3.json('albums.json').then(createBarChart);
+
+</script>
 </body>
 </html>
 

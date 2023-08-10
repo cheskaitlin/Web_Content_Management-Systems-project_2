@@ -41,7 +41,32 @@
 </nav>
 <div>
     <h1>Stacked Bar Chart - Top Albums Count by Release Date</h1>
+
+    <div id="bar-chart-container"></div>
+    <table class="table mt-5">
+        <thead>
+        <tr>
+            <th>Year</th>
+            <th>Count</th>
+        </tr>
+        </thead>
+        <tbody id="table-data"></tbody>
+    </table>
+
 </div>
+<script src="components/Chart.js"></script>
+<script src="components/StackedBarChart.js"></script>
+<script>
+    function createStackedBarChart(albums) {
+        const chart = new StackedBarChart(albums);
+        chart.createStackedBarChart();
+        chart.createSummaryTable();
+    }
+
+    // Load data from the JSON file and call the createPieChart function
+    d3.json('albums.json').then(createStackedBarChart);
+
+</script>
 </body>
 </html>
 
